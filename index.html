@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <title>PIXEL ARCADE</title>
+  <meta name="description" content="A modern retro pixel arcade with bite-sized minigames." />
+
+  <!-- Pixel font (optional). Works fine on GitHub Pages. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="bg">
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+  </div>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="brand" role="banner">
+        <div class="brand__mark" aria-hidden="true">◼︎</div>
+        <div class="brand__text">
+          <div class="brand__title">PIXEL ARCADE</div>
+          <div class="brand__subtitle">modern retro • tiny games • endless loops</div>
+        </div>
+      </div>
+
+      <div class="topbar__right">
+        <button class="chip" id="btnHome" type="button" title="Back to menu">
+          Menu
+        </button>
+        <button class="chip chip--ghost" id="btnMute" type="button" aria-pressed="false" title="Toggle sound">
+          Sound: OFF
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- MENU -->
+      <section id="screenMenu" class="screen screen--active" aria-label="Game menu">
+        <div class="panel">
+          <div class="panel__header">
+            <h1 class="panel__title">Choose a Minigame</h1>
+            <p class="panel__hint">Simple controls, fast restarts, and persistent best scores.</p>
+          </div>
+
+          <div class="grid">
+            <button class="card" data-open="runner" type="button">
+              <div class="card__top">
+                <div class="card__icon" aria-hidden="true">▦</div>
+                <div class="card__meta">
+                  <div class="card__title">BYTE RUNNER</div>
+                  <div class="card__desc">Endless lane dodge. Speed ramps up. Pure loop.</div>
+                </div>
+              </div>
+              <div class="card__bottom">
+                <span class="tag">Canvas</span>
+                <span class="tag" id="bestRunnerTag">Best: 0</span>
+              </div>
+            </button>
+
+            <button class="card" data-open="clicker" type="button">
+              <div class="card__top">
+                <div class="card__icon" aria-hidden="true">✶</div>
+                <div class="card__meta">
+                  <div class="card__title">NEON CLICKER</div>
+                  <div class="card__desc">Satisfying upgrades. Infinite progression. Minimal UI.</div>
+                </div>
+              </div>
+              <div class="card__bottom">
+                <span class="tag">Idle</span>
+                <span class="tag" id="bestClickerTag">Bits: 0</span>
+              </div>
+            </button>
+
+            <button class="card" data-open="react" type="button">
+              <div class="card__top">
+                <div class="card__icon" aria-hidden="true">▣</div>
+                <div class="card__meta">
+                  <div class="card__title">GLITCH REACT</div>
+                  <div class="card__desc">Hit the matching key. Tempo increases. Chase streaks.</div>
+                </div>
+              </div>
+              <div class="card__bottom">
+                <span class="tag">Reflex</span>
+                <span class="tag" id="bestReactTag">Best: 0</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="note">
+            <div class="note__title">Controls</div>
+            <ul class="note__list">
+              <li><strong>BYTE RUNNER:</strong> ← → / A D • Mobile: swipe or use on-screen buttons</li>
+              <li><strong>NEON CLICKER:</strong> click/tap • buy upgrades</li>
+              <li><strong>GLITCH REACT:</strong> H J K L • Mobile: tap the 4 pads</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- GAME SHELL -->
+      <section id="screenGame" class="screen" aria-label="Game screen">
+        <div class="panel">
+          <div class="panel__header panel__header--game">
+            <div>
+              <h2 class="panel__title" id="gameTitle">Game</h2>
+              <p class="panel__hint" id="gameSubtitle">—</p>
+            </div>
+            <div class="panel__actions">
+              <button class="chip" id="btnRestart" type="button">Restart</button>
+              <button class="chip chip--ghost" id="btnPause" type="button" aria-pressed="false">Pause</button>
+              <button class="chip chip--ghost" id="btnBack" type="button">Back</button>
+            </div>
+          </div>
+
+          <div id="gameHost" class="gameHost" aria-live="polite">
+            <!-- App.js mounts each game here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Built for GitHub Pages • no backend required • saves locally in your browser</span>
+    </footer>
+  </div>
+
+  <script defer src="app.js"></script>
+</body>
+</html>
